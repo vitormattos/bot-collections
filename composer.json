@@ -1,0 +1,15 @@
+{
+
+    "minimum-stability": "dev",
+    "require": {
+        "vlucas/phpdotenv": "^2.4",
+        "danog/madelineproto": "dev-master",
+        "danog/madelineproto":"dev-master"
+    },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/danog/phpseclib"
+        }
+    ]
+}

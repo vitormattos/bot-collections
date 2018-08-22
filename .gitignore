@@ -1,0 +1,24 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# Composer
+/vendor/
+
+# Eclipse
+.buildpath
+.project
+.settings
+
+# VI
+*.swp
+
+# Ignore environment-variable files
+.env
+
+# ignore all log files
+*.log
+
+# session
+session/session*
+
+#docker
+docker/apache/logs
