@@ -1,16 +1,12 @@
-version: '3'
+version: '3.7'
 
 services:
   php7:
-    build: ./docker/php
+    build: .docker/php
+    volumes:
+      - .:/app
+      - ~/.composer:/root/.composer
     env_file:
       - .env
-    volumes:
-      - .:/var/www
     environment:
       XDEBUG_CONFIG: "remote_host=172.17.0.1 remote_enable=1"
-  composer:
-    image: "composer"
-    volumes:
-      - ./:/app
-    command: install

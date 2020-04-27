@@ -1,7 +1,7 @@
 <?php
 require 'vendor/autoload.php';
 
-$dotenv = new Dotenv\Dotenv(__DIR__);
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 class EventHandler extends \danog\MadelineProto\EventHandler
@@ -27,11 +27,12 @@ class EventHandler extends \danog\MadelineProto\EventHandler
 }
 
 $MadelineProto = new \danog\MadelineProto\API('session/session.madeline');
+$MadelineProto->async(false);
 $MadelineProto->start();
 $peer['_']='peerChannel';
 $peer['channel_id'] = getenv('GROUP_ID');
 $loops = 0;
-while(true){
+while(true) {
     $pwr_chat = $MadelineProto->get_pwr_chat($peer);
     $total = 0;
     $inativos = 0;

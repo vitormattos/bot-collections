@@ -11,6 +11,9 @@
 # VI
 *.swp
 
+# VSCode
+.vscode
+
 # Ignore environment-variable files
 .env
 
