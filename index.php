@@ -4,31 +4,10 @@ require 'vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
-class EventHandler extends \danog\MadelineProto\EventHandler
-{
-    public function onLoop() {
-        $updates = $this->updates;
-    }
-    public function onUpdateNewChannelMessage($update)
-    {
-        if (isset($update['message']['out']) && $update['message']['out']) {
-            return;
-        }
-        if(isset($update['message']['to_id']['channel_id']) && $update['message']['to_id']['channel_id'] == getenv('GROUP_ID')) {
-            print_r($update['message']);
-            $this->messages->sendMessage([
-                'peer' => $update,
-                'message' => "Este grupo foi inativado, acesse o novo grupo: @SegInfoBRasil.\n".
-                    "Recomendamos que saia deste grupo e entre no outro.",
-                'reply_to_msg_id' => $update['message']['id']
-            ]);
-        }
-    }
-}
-
 $MadelineProto = new \danog\MadelineProto\API('session/session.madeline');
 $MadelineProto->async(false);
 $MadelineProto->start();
+// die($MadelineProto->getFullInfo('groupname'));
 $peer['_']='peerChannel';
 $peer['channel_id'] = getenv('GROUP_ID');
 $loops = 0;
@@ -42,7 +21,7 @@ while(true) {
             $inativos++;
             continue;
         }
-        if(count($users) <=10 && $key+1 < count($pwr_chat['participants'])) {
+        if(count($users) < 10 && $key+1 < count($pwr_chat['participants'])) {
             $name = $partcipant['user']['first_name'];
             $users[]='<a href="mention:'.$partcipant['user']['id'].'">'.$name.'</a>';
             continue;
@@ -51,8 +30,7 @@ while(true) {
             'peer' => $peer,
             'message' =>
                 'Olá '.implode(',', $users).','."\n".
-                "Este grupo foi inativado, acesse o novo grupo: @SegInfoBRasil.\n".
-                "Recomendamos que saia daqui e entre no outro.",
+                getenv('MESSAGE'),
            'parse_mode' => 'Markdown'
         ]);
         $total=$total+count($users);
