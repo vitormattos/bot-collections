@@ -7,14 +7,14 @@ RUN apt-get install -y \
         unzip \
         && docker-php-ext-install zip
 
-# Install xdebug
-RUN pecl install xdebug-2.9.4 \
-    && docker-php-ext-enable xdebug
-
 # Install GMP
 RUN apt-get install -y \
         libgmp-dev \
     && docker-php-ext-install gmp
+
+# Install xdebug
+#RUN pecl install xdebug-2.9.4 \
+#    && docker-php-ext-enable xdebug
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --snapshot
