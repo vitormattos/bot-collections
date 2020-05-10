@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "amphp/amp",
-            "version": "v2.4.3",
+            "version": "v2.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/amphp/amp.git",
-                "reference": "23ac95fc6d6973231763f5ed7d1309b39429b974"
+                "reference": "1e58d53e4af390efc7813e36cd215bd82cba4b06"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/amphp/amp/zipball/23ac95fc6d6973231763f5ed7d1309b39429b974",
-                "reference": "23ac95fc6d6973231763f5ed7d1309b39429b974",
+                "url": "https://api.github.com/repos/amphp/amp/zipball/1e58d53e4af390efc7813e36cd215bd82cba4b06",
+                "reference": "1e58d53e4af390efc7813e36cd215bd82cba4b06",
                 "shasum": ""
             },
             "require": {
@@ -85,9 +85,9 @@
             "support": {
                 "irc": "irc://irc.freenode.org/amphp",
                 "issues": "https://github.com/amphp/amp/issues",
-                "source": "https://github.com/amphp/amp/tree/master"
+                "source": "https://github.com/amphp/amp/tree/v2.4.4"
             },
-            "time": "2020-04-19T15:54:21+00:00"
+            "time": "2020-04-30T04:54:50+00:00"
         },
         {
             "name": "amphp/byte-stream",
@@ -485,16 +485,16 @@
         },
         {
             "name": "amphp/http-client",
-            "version": "v4.2.2",
+            "version": "v4.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/amphp/http-client.git",
-                "reference": "3a07c0dbb84e790ac5351019cb625f976c563faa"
+                "reference": "3a1857b00531da18382b2f4165eb0e3d0eb90171"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/amphp/http-client/zipball/3a07c0dbb84e790ac5351019cb625f976c563faa",
-                "reference": "3a07c0dbb84e790ac5351019cb625f976c563faa",
+                "url": "https://api.github.com/repos/amphp/http-client/zipball/3a1857b00531da18382b2f4165eb0e3d0eb90171",
+                "reference": "3a1857b00531da18382b2f4165eb0e3d0eb90171",
                 "shasum": ""
             },
             "require": {
@@ -516,9 +516,12 @@
                 "amphp/http-server": "^2-rc4",
                 "amphp/php-cs-fixer-config": "dev-master",
                 "amphp/phpunit-util": "^1.1",
+                "amphp/react-adapter": "^2.1",
+                "clue/socks-react": "^1.0",
                 "ext-json": "*",
                 "kelunik/link-header-rfc5988": "^1.0",
-                "phpunit/phpunit": "^7 || ^8"
+                "phpunit/phpunit": "^7 || ^8",
+                "vimeo/psalm": "^3.9@dev"
             },
             "suggest": {
                 "amphp/file": "Required for file request bodies and HTTP archive logging",
@@ -566,9 +569,9 @@
             ],
             "support": {
                 "issues": "https://github.com/amphp/http-client/issues",
-                "source": "https://github.com/amphp/http-client/tree/v4.2.2"
+                "source": "https://github.com/amphp/http-client/tree/master"
             },
-            "time": "2020-03-17T19:16:45+00:00"
+            "time": "2020-05-03T13:04:46+00:00"
         },
         {
             "name": "amphp/http-client-cookies",
@@ -643,16 +646,16 @@
         },
         {
             "name": "amphp/parallel",
-            "version": "v1.3.0",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/amphp/parallel.git",
-                "reference": "346d3f50939d3533a49ef161a0b9c8cca6eee809"
+                "reference": "2c1039bf7ca137eae4d954b14c09a7535d7d4e1c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/amphp/parallel/zipball/346d3f50939d3533a49ef161a0b9c8cca6eee809",
-                "reference": "346d3f50939d3533a49ef161a0b9c8cca6eee809",
+                "url": "https://api.github.com/repos/amphp/parallel/zipball/2c1039bf7ca137eae4d954b14c09a7535d7d4e1c",
+                "reference": "2c1039bf7ca137eae4d954b14c09a7535d7d4e1c",
                 "shasum": ""
             },
             "require": {
@@ -660,6 +663,7 @@
                 "amphp/byte-stream": "^1.6.1",
                 "amphp/parser": "^1",
                 "amphp/process": "^1",
+                "amphp/serialization": "^1",
                 "amphp/sync": "^1.0.1",
                 "php": ">=7.1"
             },
@@ -706,7 +710,7 @@
                 "issues": "https://github.com/amphp/parallel/issues",
                 "source": "https://github.com/amphp/parallel/tree/master"
             },
-            "time": "2020-02-23T15:28:43+00:00"
+            "time": "2020-04-27T15:12:37+00:00"
         },
         {
             "name": "amphp/parser",
@@ -821,6 +825,64 @@
                 "source": "https://github.com/amphp/process/tree/master"
             },
             "time": "2019-02-26T16:33:03+00:00"
+        },
+        {
+            "name": "amphp/serialization",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/amphp/serialization.git",
+                "reference": "693e77b2fb0b266c3c7d622317f881de44ae94a1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/amphp/serialization/zipball/693e77b2fb0b266c3c7d622317f881de44ae94a1",
+                "reference": "693e77b2fb0b266c3c7d622317f881de44ae94a1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "amphp/php-cs-fixer-config": "dev-master",
+                "phpunit/phpunit": "^9 || ^8 || ^7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Amp\\Serialization\\": "src"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aaron Piotrowski",
+                    "email": "aaron@trowski.com"
+                },
+                {
+                    "name": "Niklas Keller",
+                    "email": "me@kelunik.com"
+                }
+            ],
+            "description": "Serialization tools for IPC and data storage in PHP.",
+            "homepage": "https://github.com/amphp/serialization",
+            "keywords": [
+                "async",
+                "asynchronous",
+                "serialization",
+                "serialize"
+            ],
+            "support": {
+                "issues": "https://github.com/amphp/serialization/issues",
+                "source": "https://github.com/amphp/serialization/tree/master"
+            },
+            "time": "2020-03-25T21:39:07+00:00"
         },
         {
             "name": "amphp/socket",
@@ -2298,20 +2360,20 @@
         },
         {
             "name": "vlucas/phpdotenv",
-            "version": "v4.1.4",
+            "version": "v4.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "feb6dad5ae24b1380827aee1629b730080fde500"
+                "reference": "539bb6927c101a5605d31d11a2d17185a2ce2bf1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/feb6dad5ae24b1380827aee1629b730080fde500",
-                "reference": "feb6dad5ae24b1380827aee1629b730080fde500",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/539bb6927c101a5605d31d11a2d17185a2ce2bf1",
+                "reference": "539bb6927c101a5605d31d11a2d17185a2ce2bf1",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.5.9 || ^7.0",
+                "php": "^5.5.9 || ^7.0 || ^8.0",
                 "phpoption/phpoption": "^1.7.2",
                 "symfony/polyfill-ctype": "^1.9"
             },
@@ -2372,7 +2434,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-04-12T15:20:09+00:00"
+            "time": "2020-05-02T14:08:57+00:00"
         }
     ],
     "packages-dev": [],
