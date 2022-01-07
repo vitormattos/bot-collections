@@ -1,6 +1,6 @@
 {
     "require": {
-        "danog/madelineproto": "^5.1",
-        "vlucas/phpdotenv": "^4.1"
+        "danog/madelineproto": "7.0.56.9999",
+        "vlucas/phpdotenv": "^5.4"
     }
 }

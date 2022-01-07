@@ -11,33 +11,36 @@ $MadelineProto->start();
 $peer['_']='peerChannel';
 $peer['channel_id'] = getenv('GROUP_ID');
 $loops = 0;
-while(true) {
-    $pwr_chat = $MadelineProto->get_pwr_chat($peer);
-    $total = 0;
-    $inativos = 0;
-    $users = [];
-    foreach($pwr_chat['participants'] as $key => $partcipant) {
-        if(!isset($partcipant['user']['first_name'])) {
-            $inativos++;
-            continue;
-        }
-        if(count($users) < 10 && $key+1 < count($pwr_chat['participants'])) {
-            $name = $partcipant['user']['first_name'];
-            $users[]='<a href="mention:'.$partcipant['user']['id'].'">'.$name.'</a>';
-            continue;
-        }
-        $MadelineProto->messages->sendMessage([
-            'peer' => $peer,
-            'message' =>
-                'Olá '.implode(',', $users).','."\n".
-                getenv('MESSAGE'),
-           'parse_mode' => 'Markdown'
-        ]);
-        $total=$total+count($users);
-        echo "$total de ".count($pwr_chat['participants']).", inativos: $inativos\r";
+$MadelineProto->loop(function () use ($MadelineProto, $peer, $loops) {
+    while (true) {
+        yield $MadelineProto->start();
+        $pwr_chat = yield $MadelineProto->getPwrChat($peer);
+        $total = 0;
+        $inativos = 0;
         $users = [];
-        sleep(5);
+        foreach($pwr_chat['participants'] as $key => $partcipant) {
+            if(!isset($partcipant['user']['first_name'])) {
+                $inativos++;
+                continue;
+            }
+            if(count($users) < 10 && $key+1 < count($pwr_chat['participants'])) {
+                $name = $partcipant['user']['first_name'];
+                $users[]='<a href="mention:'.$partcipant['user']['id'].'">'.$name.'</a>';
+                continue;
+            }
+            yield $MadelineProto->messages->sendMessage([
+                'peer' => $peer,
+                'message' =>
+                    'Olá '.implode(',', $users).','."\n".
+                    getenv('MESSAGE'),
+            'parse_mode' => 'Markdown'
+            ]);
+            $total=$total+count($users);
+            echo "$total de ".count($pwr_chat['participants']).", inativos: $inativos\r";
+            $users = [];
+            sleep(5);
+        }
+        $loops++;
+        yield $MadelineProto->echo("\ntotal pessoas: ".count($pwr_chat['participants']).", loop: $loops\n");
     }
-    $loops++;
-    echo "\ntotal pessoas: ".count($pwr_chat['participants']).", loop: $loops\n";
-}
+});
