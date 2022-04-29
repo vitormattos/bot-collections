@@ -28,6 +28,7 @@ $MadelineProto->loop(function () use ($MadelineProto, $message, $loops) {
             $MadelineProto->messages->sendMessage(['peer' => getenv('GROUP_ID'),
                 'message' => getenv('SUCCESS_MESSAGE')
             ]);
+            exit();
         }
         sleep(60);
         $loops++;
