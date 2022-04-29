@@ -1,4 +1,4 @@
-FROM php:8.0-fpm
+FROM php:8.1-fpm
 
 RUN apt-get update
 
@@ -13,7 +13,7 @@ RUN apt-get install -y \
     && docker-php-ext-install gmp
 
 # Install xdebug
-RUN pecl install xdebug-3.1.2 \
+RUN pecl install xdebug-3.1.4 \
    && docker-php-ext-enable xdebug
 
 # Install Composer
