@@ -16,12 +16,14 @@ $MadelineProto->loop(function () use ($MadelineProto, $message, $loops) {
     $date = new DateTime();
     while (true) {
         yield $MadelineProto->start();
+        $currentDate = new DateTime();
 
         try {
             $MadelineProto->getInfo(getenv('USER_TO_MONITORE'));
             $MadelineProto->messages->editMessage(['peer' => getenv('GROUP_ID'), 'id' => $message['id'],
                 'message' => 'Ainda existe, monitorando faz ' . $loops . " minutos.\n".
-                    "Comecei às " . $date->format('Y-m-d H:i:s')
+                "Comecei às " . $date->format('Y-m-d H:i:s') . "\n".
+                "Última verificação: ". $currentDate->format('Y-m-d H:i:s')
             ]);
         } catch (Exception $th) {
             $MadelineProto->account->updateUsername(['username' => getenv('USER_TO_MONITORE')]);
